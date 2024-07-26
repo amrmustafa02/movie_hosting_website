@@ -1,5 +1,5 @@
 import 'package:beamer/beamer.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' as cs;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_deep_link/features/home/logic/home_cubit.dart';
@@ -35,14 +35,13 @@ class HomePage extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(),
             body: Center(
-              child: CarouselSlider(
+              child: cs.CarouselSlider(
                 items: state.movies
                     .map(
                       (e) => GestureDetector(
                         onTap: () {
                           // context.push("/details/${e.id}");
                           context.beamToNamed('/details/${e.id}');
-
                         },
                         child: MovieItem(
                           title: e.title!,
@@ -68,8 +67,8 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  CarouselOptions options() {
-    return CarouselOptions(
+  cs.CarouselOptions options() {
+    return cs.CarouselOptions(
       height: 500,
       aspectRatio: 16 / 9,
       viewportFraction: 0.8,
@@ -87,3 +86,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+ 
